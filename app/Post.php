@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model {
-
+class Post extends Model
+{
     protected $appends = ['comments_count'];
 
 
@@ -19,12 +19,12 @@ class Post extends Model {
         return $this->hasMany('App\Comment');
     }
 
-    public function getCommentsCountAttribute()
+    public function getCommentsCountAttribute ()
     {
         return $this->comments()->count();
     }
 
-    public function getTagsAttribute($value)
+    public function getTagsAttribute ($value)
     {
         return json_decode($value);
     }

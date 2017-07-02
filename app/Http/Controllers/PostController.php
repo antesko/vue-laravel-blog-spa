@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 
-class PostController extends Controller {
-
+class PostController extends Controller
+{
     /**
      * Display a listing of the resource.
      * @return \Illuminate\Http\Response
@@ -16,15 +16,6 @@ class PostController extends Controller {
         return Post::with('user')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     * @return \Illuminate\Http\Response
-     */
-    public function create ()
-    {
-        //
     }
 
     /**
@@ -48,16 +39,6 @@ class PostController extends Controller {
             ->with('comments')
             ->with('comments.user')
             ->findOrFail($id);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit ($id)
-    {
-        //
     }
 
     /**

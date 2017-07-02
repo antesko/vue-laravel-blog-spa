@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-class FileController extends Controller {
-
+class FileController extends Controller
+{
     public $imagesDir = '/uploads/images/';
 
 
@@ -29,6 +29,4 @@ class FileController extends Controller {
             'path'    => $this->imagesDir . $imageName
         ]);
     }
-
-
 }
