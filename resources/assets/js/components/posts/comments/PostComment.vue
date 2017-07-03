@@ -39,8 +39,6 @@
 
         data() {
             return {
-                loading: false,
-                error: null,
                 message: '',
             }
         },

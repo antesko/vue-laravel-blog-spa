@@ -67,8 +67,6 @@
 
         data() {
             return {
-                loading: false,
-                error: null,
                 user: {}
             }
         },

@@ -67,8 +67,6 @@
 
         data() {
             return {
-                loading: false,
-                error: null,
                 comments: [],
                 defaultComments: 5,
                 displayLimit: 5

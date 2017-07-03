@@ -90,8 +90,6 @@
         data() {
             return {
                 userId: 7, // TODO replace this ID with real authenticated user
-                loading: false,
-                error: null,
                 user: {},
                 formData: {}
             }

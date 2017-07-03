@@ -1,4 +1,11 @@
 export default {
+    data() {
+        return {
+            loading: false,
+            error: null
+        }
+    },
+
     methods: {
         successAlert(msg) {
             $.notify({

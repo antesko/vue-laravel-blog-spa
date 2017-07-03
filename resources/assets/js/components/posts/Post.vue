@@ -90,8 +90,6 @@
 
         data() {
             return {
-                loading: false,
-                error: null,
                 post: {}
             }
         },

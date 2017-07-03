@@ -44,8 +44,6 @@
 
         data() {
             return {
-                loading: false,
-                error: null,
                 data: {}
             }
         },
