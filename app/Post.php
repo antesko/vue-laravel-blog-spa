@@ -8,6 +8,8 @@ class Post extends Model
 {
     protected $appends = ['comments_count'];
 
+    const DEFAULT_IMAGE = '/images/noimage.jpg';
+
 
     public function user ()
     {
@@ -27,5 +29,10 @@ class Post extends Model
     public function getTagsAttribute ($value)
     {
         return json_decode($value);
+    }
+
+    public function getImageAttribute ($value)
+    {
+        return $value ?: asset(self::DEFAULT_IMAGE);
     }
 }

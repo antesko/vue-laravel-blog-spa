@@ -25,6 +25,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    const DEFAULT_IMAGE = '/images/noimage.jpg';
+
+
     public function posts ()
     {
         return $this->hasMany('App\Post');
@@ -33,5 +36,10 @@ class User extends Authenticatable
     public function comments ()
     {
         return $this->hasMany('App\Comment');
+    }
+
+    public function getAvatarAttribute ($value)
+    {
+        return $value ?: asset(self::DEFAULT_IMAGE);
     }
 }
