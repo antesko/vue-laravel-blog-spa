@@ -7,6 +7,7 @@
                 <label>Profile image:</label>
 
                 <img
+                        v-if="formData.avatar"
                         :src="formData.avatar"
                         class="img-thumbnail user-avatar"
                 >
@@ -139,9 +140,3 @@
         }
     }
 </script>
-
-<style scoped>
-    .user-avatar {
-        margin-bottom: 10px;
-    }
-</style>
