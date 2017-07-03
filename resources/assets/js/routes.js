@@ -32,6 +32,13 @@ const router = new VueRouter({
         },
 
         {
+            path: '/create',
+            component: require('./components/posts/CreatePost.vue'),
+            name: 'createPost',
+            props: true
+        },
+
+        {
             path: '/user/:id',
             component: require('./components/users/User.vue'),
             name: 'user',
