@@ -57,10 +57,7 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
-
-        if ($request->has('avatar')) {
-            $user->avatar = $request->input('avatar');
-        }
+        $user->avatar = $request->input('avatar') ?: null;
 
         $user->save();
 
