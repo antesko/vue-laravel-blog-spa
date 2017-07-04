@@ -54,7 +54,7 @@
                                 type="radio"
                                 name="featured"
                                 class="radio-inline"
-                                value="false"
+                                value="0"
                                 checked="checked"
                                 v-model="post.featured"
                         >
@@ -66,12 +66,11 @@
                                 type="radio"
                                 name="featured"
                                 class="radio-inline"
-                                value="true"
+                                value="1"
                                 v-model="post.featured"
                         >
                         Yes
                     </label>
-
                 </div>
             </div>
 
@@ -114,10 +113,10 @@
 
         data() {
             return {
-                userId: 7, // TODO replace this ID with real authenticated user
                 post: {
+                    user_id: 7, // TODO replace this ID with real authenticated user
                     image: '/images/noimage.jpg',
-                    featured: false,
+                    featured: 0,
                     tags: []
                 }
             }
@@ -125,7 +124,17 @@
 
         methods: {
             save() {
-                // TODO
+                this.loading = true
+                this.error = null
+
+                axios.post(`/api/posts/`, this.post).then((response) => {
+                    this.successAlert('Post created!')
+                    // TODO Redirect to edit page
+                }).catch((error) => {
+                    this.error = error.response.data || 'Error occurred'
+                }).then(() => {
+                    this.loading = false
+                });
             },
 
             changeImageSrc(path) {

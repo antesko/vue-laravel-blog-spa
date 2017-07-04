@@ -8,6 +8,15 @@ class Post extends Model
 {
     protected $appends = ['comments_count'];
 
+    protected $fillable = [
+        'user_id',
+        'title',
+        'body',
+        'image',
+        'tags',
+        'featured'
+    ];
+
     const DEFAULT_IMAGE = '/images/noimage.jpg';
 
 

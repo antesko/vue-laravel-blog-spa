@@ -21,11 +21,24 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function store (Request $request)
     {
-        //
+        $this->validate($request, [
+            'user_id' => 'required|exists:users,id',
+            'title'   => 'required|min:3',
+            'body'    => 'required|min:10'
+        ]);
+
+        return Post::create([
+            'user_id'  => $request->input('user_id'),
+            'title'    => $request->input('title'),
+            'body'     => $request->input('body'),
+            'image'    => $request->input('image') ?: null,
+            'tags'     => $request->has('tags') ? json_encode($request->input('tags')) : null,
+            'featured' => $request->input('featured') ?: false
+        ]);
     }
 
     /**
