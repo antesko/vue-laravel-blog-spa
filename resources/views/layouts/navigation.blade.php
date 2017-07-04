@@ -8,14 +8,32 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">SimpleBlog</a>
+            <a class="navbar-brand" href="/">SimpleBlog</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
+        <div id="navbar" class="collapse navbar-collapse pull-right">
+
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <router-link :to="{ name: 'login' }" tag="li">
+                    <a>Login</a>
+                </router-link>
+
+                <router-link :to="{ name: 'register' }" tag="li">
+                    <a>Register</a>
+                </router-link>
+
+                <router-link :to="{ name: 'postsList' }" tag="li">
+                    <a>Posts</a>
+                </router-link>
+
+                <router-link :to="{ name: 'profile' }" tag="li">
+                    <a>Profile</a>
+                </router-link>
+
+                <router-link :to="{ name: 'createPost' }" tag="button" class="btn btn-primary">
+                    Create
+                </router-link>
             </ul>
+
         </div>
     </div>
 </nav>

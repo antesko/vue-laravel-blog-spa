@@ -2,6 +2,29 @@ body {
   padding-top: 80px;
 }
 
+.navbar-inverse {
+  border-bottom: 0;
+
+  .navbar-nav {
+    button {
+      margin: 6px 0;
+    }
+
+    > li > a {
+      color: #D2D7D3;
+    }
+
+    .active > a {
+      border-right: 2px solid #E7E7E7;
+      border-left: 2px solid #E7E7E7;
+    }
+  }
+}
+
+.navbar > .container .navbar-brand {
+  color: #E7E7E7;
+}
+
 #app {
   min-height: 600px;
   height: auto !important

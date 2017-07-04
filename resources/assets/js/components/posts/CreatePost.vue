@@ -106,7 +106,10 @@
         },
 
         mounted() {
-            $('#tags-input').on('itemAdded itemRemoved', (e) => {
+            let tagsInput = $('#tags-input')
+
+            tagsInput.tagsinput()
+            tagsInput.on('itemAdded itemRemoved', (e) => {
                 this.post.tags = $('#tags-input').val()
             });
         },
