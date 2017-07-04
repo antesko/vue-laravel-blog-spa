@@ -25,7 +25,7 @@ const router = new VueRouter({
         },
 
         {
-            path: '/post/:id',
+            path: '/posts/:id',
             component: require('./components/posts/Post.vue'),
             name: 'post',
             props: true
@@ -39,7 +39,7 @@ const router = new VueRouter({
         },
 
         {
-            path: '/user/:id',
+            path: '/users/:id',
             component: require('./components/users/User.vue'),
             name: 'user',
             props: true
