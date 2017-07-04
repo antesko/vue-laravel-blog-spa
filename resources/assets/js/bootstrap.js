@@ -12,6 +12,8 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap-sass');
+    require('bootstrap-notify');
+    require('bootstrap-tagsinput')
 } catch (e) {}
 
 /**

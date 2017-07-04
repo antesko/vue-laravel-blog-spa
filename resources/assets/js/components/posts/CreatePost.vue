@@ -35,6 +35,46 @@
                 ></textarea>
             </div>
 
+            <div class="form-group">
+                <label>Tags:</label>
+
+                <select
+                        multiple
+                        id="tags-input"
+                        data-role="tagsinput"
+                ></select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label input-group">Featured:</label>
+
+                <div class="radio">
+                    <label>
+                        <input
+                                type="radio"
+                                name="featured"
+                                class="radio-inline"
+                                value="false"
+                                checked="checked"
+                                v-model="post.featured"
+                        >
+                        No
+                    </label>
+
+                    <label>
+                        <input
+                                type="radio"
+                                name="featured"
+                                class="radio-inline"
+                                value="true"
+                                v-model="post.featured"
+                        >
+                        Yes
+                    </label>
+
+                </div>
+            </div>
+
 
             <div class="text-center">
                 <loader v-if="loading"></loader>
@@ -59,29 +99,49 @@
 
 <script>
     import FileUpload from '../helpers/FileUpload.vue'
+    import 'bootstrap-tagsinput/dist/bootstrap-tagsinput.css'
 
     export default {
         components: {
             FileUpload
         },
 
+        mounted() {
+            $('#tags-input').on('itemAdded itemRemoved', (e) => {
+                this.post.tags = $('#tags-input').val()
+            });
+        },
+
         data() {
             return {
                 userId: 7, // TODO replace this ID with real authenticated user
                 post: {
-                    image: '/images/noimage.jpg'
+                    image: '/images/noimage.jpg',
+                    featured: false,
+                    tags: []
                 }
             }
         },
 
         methods: {
             save() {
-
+                // TODO
             },
 
-            changeImageSrc() {
-
+            changeImageSrc(path) {
+                this.post.image = path
             }
         }
     }
 </script>
+
+<style>
+    .radio label {
+        margin-right: 5%;
+    }
+
+    .bootstrap-tagsinput {
+        width: 100%;
+        display: block;
+    }
+</style>
