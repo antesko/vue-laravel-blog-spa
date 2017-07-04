@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -25,11 +26,9 @@ class PostController extends Controller
      */
     public function store (Request $request)
     {
-        $this->validate($request, [
-            'user_id' => 'required|exists:users,id',
-            'title'   => 'required|min:3',
-            'body'    => 'required|min:10'
-        ]);
+        $this->validate($request, array_merge($this->validationRules(), [
+            'user_id' => 'required|exists:users,id'
+        ]));
 
         return Post::create([
             'user_id'  => $request->input('user_id'),
@@ -62,7 +61,19 @@ class PostController extends Controller
      */
     public function update (Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $this->validate($request, $this->validationRules());
+
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->image = $request->input('image') ?: null;
+        $post->tags = $request->has('tags') ? json_encode($request->input('tags')) : null;
+        $post->featured = $request->input('featured') ?: false;
+
+        $post->save();
+
+        return $post;
     }
 
     /**
@@ -75,10 +86,25 @@ class PostController extends Controller
         //
     }
 
+    /**
+     * @param $id
+     * @return Collection
+     */
     public function comments ($id)
     {
         $post = Post::findOrFail($id);
 
         return $post->comments()->with('user')->get();
+    }
+
+    /**
+     * @return array
+     */
+    private function validationRules ()
+    {
+        return [
+            'title' => 'required|min:3',
+            'body'  => 'required|min:10'
+        ];
     }
 }

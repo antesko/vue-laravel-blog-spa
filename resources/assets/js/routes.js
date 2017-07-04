@@ -34,7 +34,13 @@ const router = new VueRouter({
         {
             path: '/create',
             component: require('./components/posts/CreatePost.vue'),
-            name: 'createPost',
+            name: 'createPost'
+        },
+
+        {
+            path: '/edit/:id',
+            component: require('./components/posts/EditPost.vue'),
+            name: 'editPost',
             props: true
         },
 

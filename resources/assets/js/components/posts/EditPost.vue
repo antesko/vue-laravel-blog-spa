@@ -101,6 +101,10 @@
     import 'bootstrap-tagsinput/dist/bootstrap-tagsinput.css'
 
     export default {
+        props: [
+            'id'
+        ],
+
         components: {
             FileUpload
         },
@@ -111,25 +115,37 @@
             });
         },
 
+        created() {
+            this.fetch().then(() => {
+                this.loading = false
+            })
+        },
+
         data() {
             return {
                 post: {
-                    user_id: 7, // TODO replace this ID with real authenticated user
                     image: '/images/noimage.jpg',
-                    featured: 0,
                     tags: []
                 }
             }
         },
 
         methods: {
+            fetch() {
+                return axios.get(`/api/posts/${this.id}`).then((response) => {
+                    this.post = response.data
+                    this.fillTagsInput()
+                }).catch((error) => {
+                    this.error = error.response.data || 'Error occurred'
+                })
+            },
+
             save() {
                 this.loading = true
                 this.error = null
 
-                axios.post(`/api/posts/`, this.post).then((response) => {
-                    this.successAlert('Post created!')
-                    this.$router.push({name: 'editPost', params: {id: response.data.id}})
+                axios.put(`/api/posts/${this.id}`, this.formData).then((response) => {
+                    this.successAlert('Changes saved!')
                 }).catch((error) => {
                     this.error = error.response.data || 'Error occurred'
                 }).then(() => {
@@ -139,6 +155,22 @@
 
             changeImageSrc(path) {
                 this.post.image = path
+            },
+
+            fillTagsInput() {
+                if (this.post.tags.length) {
+                    $.each(this.post.tags, function (index, value) {
+                        $('#tags-input').tagsinput('add', value);
+                    });
+                } else {
+                    $('#tags-input').tagsinput();
+                }
+            }
+        },
+
+        computed: {
+            formData() {
+                return _.pick(this.post, 'title', 'body', 'tags', 'featured', 'image')
             }
         }
     }
