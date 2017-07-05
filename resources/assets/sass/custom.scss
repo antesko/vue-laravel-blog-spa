@@ -3,20 +3,24 @@ body {
 }
 
 .navbar-inverse {
-  border-bottom: 0;
+  border-width: 0;
 
   .navbar-nav {
     button {
       margin: 6px 0;
     }
 
-    > li > a {
-      color: #D2D7D3;
+    > li {
+      margin: 0 5px;
+
+      > a {
+        color: #D2D7D3;
+      }
     }
 
-    .active > a {
-      border-right: 2px solid #E7E7E7;
-      border-left: 2px solid #E7E7E7;
+    .active > a, .active > a:focus {
+      background-color: $body-bg;
+      color: #333;
     }
   }
 }
