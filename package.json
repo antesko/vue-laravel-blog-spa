@@ -15,11 +15,13 @@
     "bootstrap-sass": "^3.3.7",
     "bootstrap-tagsinput": "^0.7.1",
     "cross-env": "^3.2.3",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.1.1",
     "laravel-mix": "0.*",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "vue": "^2.1.10",
+    "vue-html5-editor": "^1.1.1",
     "vue-router": "^2.7.0",
     "webpack-livereload-plugin": "^0.11.0"
   }

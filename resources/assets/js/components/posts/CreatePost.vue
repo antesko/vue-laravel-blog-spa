@@ -41,4 +41,8 @@
         width: 100%;
         display: block;
     }
+
+    .vue-html5-editor .content {
+        max-height: 500px;
+    }
 </style>

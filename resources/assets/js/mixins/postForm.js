@@ -20,7 +20,7 @@ export default {
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="form-group">
                 <label>Title:</label>
                 <input
@@ -32,12 +32,11 @@ export default {
 
             <div class="form-group">
                 <label>Body:</label>
-                <textarea
-                        class="form-control"
-                        cols="30"
-                        rows="10"
-                        v-model="post.body"
-                ></textarea>
+                
+                <vue-html5-editor 
+                    :content="post.body" 
+                    @change="updatePostBody"
+                ></vue-html5-editor>
             </div>
 
             <div class="form-group">
@@ -127,6 +126,10 @@ export default {
     methods: {
         changeImageSrc(path) {
             this.post.image = path
+        },
+
+        updatePostBody(value) {
+            this.post.body = value
         }
     }
 }

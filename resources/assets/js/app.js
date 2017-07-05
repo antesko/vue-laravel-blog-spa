@@ -16,10 +16,18 @@ window.Vue = require('vue');
  */
 
 import Router from './routes.js'
-import global from './mixins/global'
 
-Vue.component('loader', require('./components/helpers/Loader.vue'));
+// Plugins
+import 'font-awesome/css/font-awesome.min.css'
+import vue_html5_editor_options from './options/vue-html5-editor-options'
+Vue.use(require('vue-html5-editor'), vue_html5_editor_options)
+
+// Global mixins
+import global from './mixins/global'
 Vue.mixin(global);
+
+// Global components
+Vue.component('loader', require('./components/helpers/Loader.vue'));
 
 const app = new Vue({
     el: '#app',
