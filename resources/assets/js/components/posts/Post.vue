@@ -48,10 +48,7 @@
                 </div>
             </div>
 
-            <div class="post-body">
-                <p>
-                    {{ post.body }}
-                </p>
+            <div class="post-body" v-html="post.body">
             </div>
 
             <div class="col-md-12 tags pull-right">
@@ -132,11 +129,9 @@
         padding-left: 0;
     }
 
-    .post-body p {
+    .post-body {
         padding: 20px;
         margin-top: 100px;
-        font-size: 15px;
-        text-align: justify;
 
         &::first-letter {
             color: #D8335B;
