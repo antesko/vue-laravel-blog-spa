@@ -16,10 +16,10 @@ window.Vue = require('vue');
  */
 
 import Router from './routes.js'
-import globalMixin from './mixins/globalMixin'
+import global from './mixins/global'
 
 Vue.component('loader', require('./components/helpers/Loader.vue'));
-Vue.mixin(globalMixin);
+Vue.mixin(global);
 
 const app = new Vue({
     el: '#app',

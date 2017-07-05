@@ -66,7 +66,7 @@
 </template>
 
 <script>
-    import postMixin from '../../mixins/postMixin'
+    import post from '../../mixins/post'
 
     export default {
         props: [
@@ -74,7 +74,7 @@
         ],
 
         mixins: [
-            postMixin
+            post
         ],
 
         computed: {

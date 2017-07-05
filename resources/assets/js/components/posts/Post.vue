@@ -71,7 +71,7 @@
 </template>
 
 <script>
-    import postMixin from '../../mixins/postMixin'
+    import post from '../../mixins/post'
 
     import Comments from './comments/Comments.vue'
 
@@ -85,7 +85,7 @@
         ],
 
         mixins: [
-            postMixin
+            post
         ],
 
         data() {
