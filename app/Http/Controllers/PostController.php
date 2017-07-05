@@ -56,13 +56,12 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
-     * @return \Illuminate\Http\Response
+     * @param Post                      $post
+     * @return Post
+     * @internal param int $id
      */
-    public function update (Request $request, $id)
+    public function update (Request $request, Post $post)
     {
-        $post = Post::findOrFail($id);
-
         $this->validate($request, $this->validationRules());
 
         $post->title = $request->input('title');

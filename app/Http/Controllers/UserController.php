@@ -41,16 +41,15 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
-     * @return \Illuminate\Http\Response
+     * @param User                      $user
+     * @return User
+     * @internal param int $id
      */
-    public function update (Request $request, $id)
+    public function update (Request $request, User $user)
     {
-        $user = User::findOrFail($id);
-
         $this->validate($request, [
             'name'     => 'required|between:2,50',
-            'email'    => 'required|email|unique:users,email,' . $id,
+            'email'    => 'required|email|unique:users,email,' . $user->id,
             'password' => 'min:6|confirmed',
         ]);
 
