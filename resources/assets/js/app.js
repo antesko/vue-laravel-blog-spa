@@ -19,7 +19,7 @@ import Router from './routes.js'
 
 // Plugins
 import 'font-awesome/css/font-awesome.min.css'
-import vue_html5_editor_options from './options/vue-html5-editor-options'
+import vue_html5_editor_options from './packages/vue-html5-editor/options'
 Vue.use(require('vue-html5-editor'), vue_html5_editor_options)
 
 // Global mixins
