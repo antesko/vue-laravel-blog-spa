@@ -23,6 +23,7 @@
                     this.fillTagsInput()
                 }).catch((error) => {
                     this.error = error.response.data || 'Error occurred'
+                    this.$router.push({name: 'postsList'})
                 })
             },
 
