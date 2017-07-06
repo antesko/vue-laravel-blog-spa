@@ -88,13 +88,41 @@ export default {
                         v-html="errors">
                 </div>
             </div>
-
+            
             <button
                     @click="save"
                     class="btn btn-primary pull-right"
             >
                 Save
             </button>
+            
+            <div class="clearfix"></div>
+            <small>
+                <em 
+                    v-if="$route.name == 'editPost'"
+                    class="pull-right text-danger del-text"
+                    data-toggle="modal" 
+                    data-target="#confirm-delete"
+                >To delete post, click here</em>
+            </small>
+        </div>
+        
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <h4>Are you sure?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <a 
+                            class="btn btn-danger btn-ok"
+                            data-dismiss="modal"
+                            @click="deletePost"
+                        >Delete</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
