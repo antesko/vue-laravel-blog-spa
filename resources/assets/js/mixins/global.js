@@ -32,7 +32,10 @@ export default {
             if (this.error) {
                 if (typeof this.error === 'string' || this.error instanceof String) {
                     return this.error
-                } else {
+                } else if(_.has(this.error, 'message')) {
+                    return this.error.message
+                }
+                else {
                     let arr = _.flatMap(this.error)
                     let ul = $('<ul>')
 

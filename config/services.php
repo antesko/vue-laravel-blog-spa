@@ -35,4 +35,9 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'api' => [
+        'client_id' => env('API_CLIENT_ID'),
+        'client_secret' => env('API_CLIENT_SECRET'),
+    ]
+
 ];

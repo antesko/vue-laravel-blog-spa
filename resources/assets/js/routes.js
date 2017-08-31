@@ -18,6 +18,12 @@ const router = new VueRouter({
         },
 
         {
+            path: '/oauth',
+            component: require('./components/passport/Oauth.vue'),
+            name: 'oauth'
+        },
+
+        {
             path: '/posts',
             component: require('./components/posts/PostsList.vue'),
             name: 'postsList',

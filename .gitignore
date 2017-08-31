@@ -14,5 +14,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 .env
+.rnd
 composer.phar
 _ide_helper.php
