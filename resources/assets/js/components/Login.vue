@@ -59,16 +59,12 @@
 
         methods: {
             submit() {
-                let data = {
-                    client_id: 7,
-                    client_secret: 'R5zIskWZEOom0PyvSM4fO30eDRGNDmwR3JiIYBz5',
-                    grant_type: 'password',
+                this.loading = true
+                this.error = ''
+                axios.post(`/api/auth/token`, {
                     username: this.email,
-                    password: this.password,
-                    scope: ''
-                }
-
-                axios.post(`/oauth/token`, data).then((response) => {
+                    password: this.password
+                }).then((response) => {
                     console.log(response)
                 }).catch((error) => {
                     this.error = error.response.data || 'Error occurred'

@@ -6,7 +6,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('auth/login', 'AuthController@login');
+Route::post('auth/token', 'AuthController@token');
 Route::post('auth/register', 'AuthController@register');
 
 // TODO: add all these routes to auth middleware
