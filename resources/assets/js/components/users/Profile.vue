@@ -89,7 +89,6 @@
 
         data() {
             return {
-                userId: 7, // TODO replace this ID with real authenticated user
                 user: {},
                 formData: {}
             }
@@ -108,7 +107,7 @@
 
         methods: {
             fetch() {
-                return axios.get(`/api/users/${this.userId}`).then((response) => {
+                return axios.get('/api/user').then((response) => {
                     this.user = response.data
                 }).catch((error) => {
                     this.error = error.response.data || 'Error occurred'
@@ -121,7 +120,7 @@
                 this.loading = true
                 this.error = null
 
-                axios.put(`/api/users/${this.userId}`, this.formData).then((response) => {
+                axios.put(`/api/users/${this.user.id}`, this.formData).then((response) => {
                     this.successAlert('Profile updated!')
                     delete this.formData.password
                     delete this.formData.password_confirmation

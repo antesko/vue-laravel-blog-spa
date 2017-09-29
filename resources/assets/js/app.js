@@ -1,3 +1,8 @@
+window.Vue = require('vue');
+
+import Auth from './packages/auth/Auth'
+Vue.use(Auth)
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -5,8 +10,6 @@
  */
 
 require('./bootstrap');
-
-window.Vue = require('vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -20,9 +23,6 @@ import Router from './routes.js'
 import 'font-awesome/css/font-awesome.min.css'
 import vue_html5_editor_options from './packages/vue-html5-editor/options'
 Vue.use(require('vue-html5-editor'), vue_html5_editor_options)
-
-import Auth from './packages/auth/Auth'
-Vue.use(Auth)
 
 // Global mixins
 import global from './mixins/global'

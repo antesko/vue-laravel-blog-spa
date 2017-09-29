@@ -3,6 +3,11 @@ Vue.component('loader',
 );
 
 Vue.component(
+    'header-navbar',
+    require('./components/navigation/Navbar.vue')
+);
+
+Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue')
 );

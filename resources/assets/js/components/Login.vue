@@ -66,7 +66,8 @@
                     password: this.password
                 }).then(response => {
                     this.$auth.setToken(response.data.access_token, response.data.expires_in + Date.now());
-                    this.$router.push("/posts");
+                    //this.$router.push("/posts");
+                    location.replace('/posts')
                 }).catch(error => {
                     this.error = error.response ? error.response.data : 'Error occurred'
                 }).then(() => {

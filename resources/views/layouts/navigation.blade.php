@@ -12,27 +12,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse pull-right">
 
-            <ul class="nav navbar-nav">
-                <router-link :to="{ name: 'login' }" tag="li">
-                    <a>Login</a>
-                </router-link>
-
-                <router-link :to="{ name: 'register' }" tag="li">
-                    <a>Register</a>
-                </router-link>
-
-                <router-link :to="{ name: 'postsList' }" tag="li">
-                    <a>Posts</a>
-                </router-link>
-
-                <router-link :to="{ name: 'profile' }" tag="li">
-                    <a>Profile</a>
-                </router-link>
-
-                <router-link :to="{ name: 'createPost' }" tag="button" class="btn btn-primary">
-                    Create
-                </router-link>
-            </ul>
+            <header-navbar></header-navbar>
 
         </div>
     </div>

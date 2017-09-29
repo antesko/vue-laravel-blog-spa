@@ -2,19 +2,21 @@
 
 use Illuminate\Http\Request;
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::post('auth/token', 'AuthController@token');
 Route::post('auth/register', 'AuthController@register');
 
-Route::resource('posts', 'PostController');
-Route::get('posts/{id}/comments', 'PostController@comments');
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
 
-Route::resource('comments', 'CommentController');
+    Route::resource('posts', 'PostController');
+    Route::get('posts/{id}/comments', 'PostController@comments');
 
-Route::resource('users', 'UserController');
-Route::get('users/{id}/posts', 'UserController@posts');
+    Route::resource('comments', 'CommentController');
 
-Route::post('upload/image', 'FileController@uploadImage');
+    Route::resource('users', 'UserController');
+    Route::get('users/{id}/posts', 'UserController@posts');
+
+    Route::post('upload/image', 'FileController@uploadImage');
+});
