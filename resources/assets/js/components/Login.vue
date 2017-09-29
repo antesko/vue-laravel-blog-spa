@@ -64,10 +64,11 @@
                 axios.post(`/api/auth/token`, {
                     username: this.email,
                     password: this.password
-                }).then((response) => {
-                    console.log(response)
-                }).catch((error) => {
-                    this.error = error.response.data || 'Error occurred'
+                }).then(response => {
+                    this.$auth.setToken(response.data.access_token, response.data.expires_in + Date.now());
+                    this.$router.push("/posts");
+                }).catch(error => {
+                    this.error = error.response ? error.response.data : 'Error occurred'
                 }).then(() => {
                     this.loading = false
                 });

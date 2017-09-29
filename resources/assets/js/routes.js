@@ -8,59 +8,86 @@ const router = new VueRouter({
         {
             path: '/login',
             component: require('./components/Login.vue'),
-            name: 'login'
+            name: 'login',
+            meta: {
+                public: true
+            }
         },
 
         {
             path: '/register',
             component: require('./components/Register.vue'),
-            name: 'register'
+            name: 'register',
+            meta: {
+                public: true
+            }
         },
 
         {
             path: '/oauth',
             component: require('./components/passport/Oauth.vue'),
-            name: 'oauth'
+            name: 'oauth',
+            meta: {
+                private: true
+            }
         },
 
         {
             path: '/posts',
             component: require('./components/posts/PostsList.vue'),
             name: 'postsList',
-            props: true
+            props: true,
+            meta: {
+                private: true
+            }
         },
 
         {
             path: '/posts/:id',
             component: require('./components/posts/Post.vue'),
             name: 'post',
-            props: true
+            props: true,
+            meta: {
+                private: true
+            }
         },
 
         {
             path: '/create',
             component: require('./components/posts/CreatePost.vue'),
-            name: 'createPost'
+            name: 'createPost',
+            meta: {
+                private: true
+            }
         },
 
         {
             path: '/edit/:id',
             component: require('./components/posts/EditPost.vue'),
             name: 'editPost',
-            props: true
+            props: true,
+            meta: {
+                private: true
+            }
         },
 
         {
             path: '/users/:id',
             component: require('./components/users/User.vue'),
             name: 'user',
-            props: true
+            props: true,
+            meta: {
+                private: true
+            }
         },
 
         {
             path: '/profile',
             component: require('./components/users/Profile.vue'),
-            name: 'profile'
+            name: 'profile',
+            meta: {
+                private: true
+            }
         }
     ],
 

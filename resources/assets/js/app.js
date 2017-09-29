@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -22,27 +21,32 @@ import 'font-awesome/css/font-awesome.min.css'
 import vue_html5_editor_options from './packages/vue-html5-editor/options'
 Vue.use(require('vue-html5-editor'), vue_html5_editor_options)
 
+import Auth from './packages/auth/Auth'
+Vue.use(Auth)
+
 // Global mixins
 import global from './mixins/global'
 Vue.mixin(global);
 
-// Global components
-Vue.component('loader', require('./components/helpers/Loader.vue'));
+// Page Components
+require('./vue-components')
 
-Vue.component(
-    'passport-clients',
-    require('./components/passport/Clients.vue')
-);
-
-Vue.component(
-    'passport-authorized-clients',
-    require('./components/passport/AuthorizedClients.vue')
-);
-
-Vue.component(
-    'passport-personal-access-tokens',
-    require('./components/passport/PersonalAccessTokens.vue')
-);
+// Router setup
+Router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.public) && Vue.auth.isAuthenticated()) {
+        next({
+            path: '/posts'
+        })
+    }
+    else if (to.matched.some(record => record.meta.private) && !Vue.auth.isAuthenticated()) {
+        next({
+            path: '/login'
+        })
+    }
+    else {
+        next()
+    }
+})
 
 const app = new Vue({
     el: '#app',

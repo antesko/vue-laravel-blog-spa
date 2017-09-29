@@ -33,9 +33,13 @@ const Auth = {
             }
         }
 
-        Vue.prototype.$auth = function() {
-            return Vue.auth
-        }
+        Object.defineProperties(Vue.prototype, {
+            $auth: {
+                get() {
+                    return Vue.auth
+                }
+            }
+        })
     }
 };
 
