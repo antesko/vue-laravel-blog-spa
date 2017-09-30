@@ -24,6 +24,15 @@ const router = new VueRouter({
         },
 
         {
+            path: '/',
+            component: require('./components/Home.vue'),
+            name: 'home',
+            meta: {
+                private: true
+            }
+        },
+
+        {
             path: '/oauth',
             component: require('./components/passport/Oauth.vue'),
             name: 'oauth',

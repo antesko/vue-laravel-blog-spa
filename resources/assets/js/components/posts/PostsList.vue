@@ -11,7 +11,7 @@
             </div>
         </div>
 
-        <div class="col-md-9" v-if="!loading && !error">
+        <div class="col-md-10 col-md-offset-1" v-if="!loading && !error">
 
             <posts-list-item
                     v-for="post in posts"
