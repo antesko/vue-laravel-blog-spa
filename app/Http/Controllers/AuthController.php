@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
@@ -35,5 +36,18 @@ class AuthController extends Controller
 
     public function register (Request $request)
     {
+        $this->validate($request, [
+            'name'     => 'required|between:2,50',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'min:6|confirmed',
+        ]);
+
+        $user = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+
+        return $user;
     }
 }
