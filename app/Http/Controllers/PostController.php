@@ -26,12 +26,10 @@ class PostController extends Controller
      */
     public function store (Request $request)
     {
-        $this->validate($request, array_merge($this->validationRules(), [
-            'user_id' => 'required|exists:users,id'
-        ]));
+        $this->validate($request, $this->validationRules());
 
         return Post::create([
-            'user_id'  => $request->input('user_id'),
+            'user_id'  => $request->user()->id,
             'title'    => $request->input('title'),
             'body'     => $request->input('body'),
             'image'    => $request->input('image') ?: null,

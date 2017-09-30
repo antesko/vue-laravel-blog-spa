@@ -45,6 +45,17 @@
                             Featured
                         </span>
                     </h4>
+
+                    <div class="pull-right">
+                        <router-link
+                                :to="{ name: 'editPost', params: { id: post.id }}"
+                                tag="button"
+                                class="btn btn-default btn-sm edit-btn"
+                                v-if="userIsAuthor"
+                        >
+                            Edit Post
+                        </router-link>
+                    </div>
                 </div>
             </div>
 
@@ -87,24 +98,26 @@
 
         data() {
             return {
-                post: {}
+                post: {},
+                user: {}
             }
         },
 
         created() {
             this.loading = true
 
-            this.fetch().then(() => {
-                this.loading = false
-            });
+            this.fetchPost()
+            this.fetchUser()
         },
 
         methods: {
-            fetch() {
+            fetchPost() {
                 return axios.get(`/api/posts/${this.id}`).then((response) => {
                     this.post = response.data
                 }).catch((error) => {
                     this.error = error.response.data || 'Error occurred'
+                }).then(() => {
+                    this.loading = false
                 })
             }
         }
@@ -148,5 +161,9 @@
             font-size: 12px;
             margin: 0 4px;
         }
+    }
+
+    .edit-btn {
+        padding: 0 10px;
     }
 </style>

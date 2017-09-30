@@ -59,7 +59,6 @@
             postComment() {
                 axios.post('/api/comments', {
                     post_id: this.postId,
-                    user_id: 4, // TODO change to real authenticated user
                     body: this.message
                 }).then((response) => {
                     this.successAlert('Comment posted!')
