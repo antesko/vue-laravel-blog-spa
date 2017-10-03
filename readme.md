@@ -1,51 +1,39 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# SimpleBlog - Vue.js 2 + Laravel 5 SPA
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+SimpleBlog is a single-page demo blog project which uses Laravel 5.4 and Vue.js 2. 
 
-## About Laravel
+## Features
+* User login/registration
+* Displaying paginated list of blog posts
+* Creating and editing blog posts
+* Writing post comments
+* Editing user profile
+* Viewing other authors' profiles
+* Image upload
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## Built With
+* Backend (API):[Laravel 5.4](https://laravel.com/docs/5.4)
+* Frontend:[Vue.js 2](https://vuejs.org/)
+* Routing:[vue-router 2](https://router.vuejs.org/en/)
+* Authentication: OAuth2 with[Laravel Passport](https://laravel.com/docs/5.4/passport)
+* HTTP client: [Axios](https://github.com/axios/axios)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+* Copy the `.env.example` to `.env` and edit the parameters to match your environment. Set `APP_URL` and DB config variables.
+* `composer install`
+* `npm install`
+* `npm run dev`
+* Generate the app key: `php artisan key:generate`
+* Migrate and seed the DB: `php artisan migrate --seed`
+* Configure Laravel Passport ([LINK](https://laravel.com/docs/5.4/passport)):
+  * Generate encription keys: `php artisan passport:keys`
+  * Generate new password grant client: `php artisan passport:client --password`  
+Write down the `Client ID` and `Client Secret` and add them to your `.env` file
+* **You're done!**   
+You can now register a new user, or use one from the DB. All users have a default password: 'secret'
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+### Acknowledgments
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
-
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+* Hat tip to Renato from [devlob](http://www.devlob.com/) for his authentication package tutorial
