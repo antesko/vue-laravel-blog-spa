@@ -12,10 +12,10 @@ SimpleBlog is a single-page demo blog project which uses Laravel 5.4 and Vue.js 
 * Image upload
 
 ## Built With
-* Backend (API):[Laravel 5.4](https://laravel.com/docs/5.4)
-* Frontend:[Vue.js 2](https://vuejs.org/)
-* Routing:[vue-router 2](https://router.vuejs.org/en/)
-* Authentication: OAuth2 with[Laravel Passport](https://laravel.com/docs/5.4/passport)
+* Backend (API): [Laravel 5.4](https://laravel.com/docs/5.4)
+* Frontend: [Vue.js 2](https://vuejs.org/)
+* Routing: [vue-router 2](https://router.vuejs.org/en/)
+* Authentication: OAuth2 with [Laravel Passport](https://laravel.com/docs/5.4/passport)
 * HTTP client: [Axios](https://github.com/axios/axios)
 
 ## Installation
@@ -27,7 +27,7 @@ SimpleBlog is a single-page demo blog project which uses Laravel 5.4 and Vue.js 
 * Generate the app key: `php artisan key:generate`
 * Migrate and seed the DB: `php artisan migrate --seed`
 * Configure Laravel Passport ([LINK](https://laravel.com/docs/5.4/passport)):
-  * Generate encription keys: `php artisan passport:keys`
+  * Generate encryption keys: `php artisan passport:keys`
   * Generate new password grant client: `php artisan passport:client --password`  
 Write down the `Client ID` and `Client Secret` and add them to your `.env` file
 * **You're done!**   
